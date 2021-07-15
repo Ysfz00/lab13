@@ -18,14 +18,14 @@ public class HashTable {
 		if (hashTable[hash] == null)
 			return null;
 		else {
-			Dictionary entry = hashTable[hash];
-			while (entry != null && entry.getHash() != hash)
-				entry = entry.getNext();
+			Dictionary dic = hashTable[hash];
+			while (dic != null && dic.getHash() != hash)
+				dic = dic.getNext();
 
-			if (entry == null)
+			if (dic == null)
 				return null;
 			else
-				return entry.getValue();
+				return dic.getValue();
 		}
 	}
 
@@ -34,11 +34,11 @@ public class HashTable {
 		if (hashTable[hash] == null)
 			hashTable[hash] = new Dictionary(hash, word);
 		else {
-			Dictionary entry = hashTable[hash];
-			while (entry.getNext() != null && entry.getHash() == hash) {
-				entry = entry.getNext();
+			Dictionary dic = hashTable[hash];
+			while (dic.getNext() != null && dic.getHash() == hash) {
+				dic = dic.getNext();
 			}
-			entry.setNext(new Dictionary(hash, word));
+			dic.setNext(new Dictionary(hash, word));
 		}
 		
 	}
